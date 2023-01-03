@@ -9,6 +9,7 @@ use App\Http\Controllers\BlogController;
 
 //Font Ends Routes
 Route::get('/',[FontendController::class,'home'])->name('font.home');
+Route::get('/blogs',[FontendController::class,'blogs'])->name('font.blogs');
 
 Route::middleware([
     'auth:sanctum',
@@ -20,5 +21,6 @@ Route::middleware([
 
     Route::get('/create/blog',[BlogController::class,'createClog'])->name('create.blog');
     Route::get('/manage/blog',[BlogController::class,'manageBlog'])->name('manage.blog');
+    Route::post('/store/post',[BlogController::class,'storePost'])->name('store.post');
 
 });

@@ -34,6 +34,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link text-light" aria-current="page" href="{{ route('font.blogs') }}">Blogs</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
@@ -46,6 +50,7 @@
         </nav>
 
 
+       @yield('body')
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
