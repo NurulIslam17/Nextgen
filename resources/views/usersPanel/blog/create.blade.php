@@ -29,28 +29,55 @@
                             <div class="row mt-2">
                                 <label class="col-md-3" for="">Blog Title</label>
                                 <div class="col-md-9">
-                                    <input type="text" name="title" class="form-control rounded-0">
+                                    <input type="text" name="title" value="{{ old('title') }}"  class="@error('title') is-invalid @enderror form-control rounded-0">
+
+                                    @error('title')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mt-2">
                                 <label class="col-md-3" for="">Blog Description</label>
                                 <div class="col-md-9">
-                                    <textarea name="description" class="form-control rounded-0" cols="30" rows="10"></textarea>
+                                    <textarea name="description" id="editor1" value="{{ old('description') }}"  class="@error('description') is-invalid @enderror form-control rounded-0" cols="30" rows="10"></textarea>
+
+                                    @error('description')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mt-2">
                                 <label class="col-md-3" for="">Blog Image</label>
                                 <div class="col-md-9">
-                                    <input type="file" name="image" class="form-control rounded-0">
+                                    <input type="file" name="image" value="{{ old('image') }}"  class="@error('image') is-invalid @enderror rounded-0">
+
+                                    @error('image')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mt-2">
-                                <label class="col-md-3" for="">Feature Image</label>
+                                <label class="col-md-3" for="">Feature Images</label>
                                 <div class="col-md-9">
-                                    <input type="file" name="feature_image[]" multiple class="form-control rounded-0">
+                                    <input type="file" name="feature_image[]" multiple value="{{ old('feature_image') }}"  class="@error('feature_image') is-invalid @enderror  rounded-0">
+
+                                    @error('feature_image')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <label class="col-md-3" for="">Post Date</label>
+                                <div class="col-md-9">
+                                    <input type="date" name="date" multiple value="{{ old('date') }}"  class="@error('feature_image') is-invalid @enderror  rounded-0">
+
+                                    @error('date')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 

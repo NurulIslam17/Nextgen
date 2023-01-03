@@ -19,6 +19,9 @@
     <link href="{{asset('/')}}beckend/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{asset('/')}}beckend/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    {{--    fntws cdn--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!-- DataTables -->
     <link href="{{asset('/')}}beckend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -26,6 +29,9 @@
 
     <!-- Responsive datatable examples -->
     <link href="{{asset('/')}}beckend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
 </head>
 
@@ -242,6 +248,20 @@
 
 <!-- App js -->
 <script src="{{asset('/')}}beckend/assets/js/app.js"></script>
+
+<!-- textEditors -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+
+{{--<script>--}}
+{{--    $(document).ready(function() {--}}
+{{--        $('#summernote').summernote();--}}
+{{--    });--}}
+{{--</script>--}}
+
+<script>
+    CKEDITOR.replace( 'editor1' );
+</script>
 
 
 </body>

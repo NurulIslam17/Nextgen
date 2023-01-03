@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 class BlogController extends Controller
 {
@@ -16,7 +17,8 @@ class BlogController extends Controller
 
     public function manageBlog()
     {
-        return view('usersPanel.blog.manage');
+        $posts = Post::where('author_id',Auth::user()->id )->get();
+        return view('usersPanel.blog.manage',compact('posts'));
     }
 
     // Data Insertion in DB
@@ -31,9 +33,17 @@ class BlogController extends Controller
         return $this->imageUrl;
     }
 
-
     public function storePost(Request $request)
     {
+
+         $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'feature_image' => 'required',
+            'date' => 'required',
+        ]);
+
 //        dd($request->all());
         $multiImg = array();
         if($files = $request->file('feature_image'))
@@ -55,7 +65,47 @@ class BlogController extends Controller
             'description'   => $request->description,
             'image'         => $this->saveImage($request),
             'feature_image' => implode('|',$multiImg),
+            'date' => $request->date
         ]);
         return back()->with('msg','New Post Created');
+    }
+
+    //    Post details
+    public function postDetails($id)
+    {
+        $this->post = Post::find($id);
+//        return  $this->post;
+        $images =  DB::table('posts')->where('hotel_name', $name)->pluck('file');
+        return view('usersPanel.blog.details',[
+            'postDetails' => $this->post
+        ]);
+    }
+
+    //    post Delete
+    public  function postDelete($id)
+    {
+        $post =  Post::find($id);
+//        return $post;
+        if(file_exists($post->image))
+        {
+            unlink($post->image);
+        }
+
+        $images = explode("|", $post->feature_image);
+
+//        foreach($images as $image)
+//        {
+//
+//            $image_path = public_path().'/post/features_image/'.$image;
+//
+//            if(File::exists($image_path)) {
+//                File::delete($image_path);
+//            }
+//        }
+
+        $post->delete();
+        return back()->with('delete','Post Deleted successfully.');
+
+
     }
 }
