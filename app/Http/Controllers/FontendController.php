@@ -34,9 +34,12 @@ class FontendController extends Controller
             ->where('posts.id',$id)
             ->select('posts.*','users.name')
             ->first();
+        $image =  DB::table('posts')->where('id', $id)->first();
+        $images = explode('|',$image->feature_image);
 //        return $allData;
         return view('fontend.details',[
             'details' => $allData,
+            'images' => $images
         ]);
     }
 

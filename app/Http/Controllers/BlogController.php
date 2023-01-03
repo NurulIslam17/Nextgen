@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use File;
+use DB;
 
 class BlogController extends Controller
 {
@@ -73,11 +73,12 @@ class BlogController extends Controller
     //    Post details
     public function postDetails($id)
     {
-        $this->post = Post::find($id);
-//        return  $this->post;
-        $images =  DB::table('posts')->where('hotel_name', $name)->pluck('file');
+        $image =  DB::table('posts')->where('id', $id)->first();
+        $images = explode('|',$image->feature_image);
+//        return $images;
         return view('usersPanel.blog.details',[
-            'postDetails' => $this->post
+            'postDetails' => $image,
+            'allImages' =>$images
         ]);
     }
 

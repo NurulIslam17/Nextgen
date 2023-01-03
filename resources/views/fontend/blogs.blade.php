@@ -28,13 +28,15 @@
                                   {!! substr($post->description,0,200) !!} <a href="{{ route('blog.post.details',['id'=>$post->id]) }}">more...</a>
                                 </p>
 
-                                <p class="p-0 m-0"> <i class="fa-solid fa-user"></i> &nbsp; {{ $post->name }} &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-calendar-days"></i>  {{ $post->date }}</p>
+                                <p class="p-0 m-0"> <i class="fa-solid fa-user text-danger"></i> &nbsp; {{ $post->name }} &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-calendar-days text-warning"></i>  &nbsp; {{ $post->date }}</p>
 
 
                             </div>
                         </div>
                     </div>
                     @endforeach
+
+
 
 
                 </div>

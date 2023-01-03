@@ -30,9 +30,11 @@
             <div class="col-md-3">
                 <h4>Featured Images</h4>
                 <hr>
+                @foreach($images as $link)
                 <div class="row mt-2">
-                    <img src="{{ asset($details->image) }}" style="height: 150px; width: 200px" alt="">
+                    <img src="{{ asset($link) }}" style="height: 150px; width: 200px" alt="">
                 </div>
+                @endforeach
             </div>
 
         </div>

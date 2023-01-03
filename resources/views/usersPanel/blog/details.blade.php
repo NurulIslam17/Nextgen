@@ -19,20 +19,14 @@
             </div>
         </div>
 
-{{--        @php--}}
-{{--         $image = DB::table('post')->where('id',1)->first();--}}
-{{--         $images = explode('|',$image->image);--}}
-{{--        @endphp--}}
-
-
         <div class="col-md-3">
             <h4>Featured Images</h4>
             <hr>
-{{--            @foreach($postDetails->feature_image as $singleImage)--}}
+            @foreach($allImages as $singleImage)
                 <div class="row mt-2">
-                    <img src="{{ asset($postDetails->image) }}" style="height: 150px; width: 200px" alt="">
+                    <img src="{{ asset($singleImage) }}" style="height: 150px; width: 200px" alt="">
                 </div>
-{{--            @endforeach--}}
+            @endforeach
         </div>
 
     </div>

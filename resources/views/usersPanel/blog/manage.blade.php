@@ -44,7 +44,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('post.details',['id'=>$post->id]) }}" class="text-success"><i class="fa-solid fa-book-open fa-2x"></i></a>
-                                        <a href="{{ route('post.delete',['id'=>$post->id]) }}" onclick="alert('Are you sure to delete this ?')" class="text-danger"><i class="fa-solid fa-trash fa-2x "></i></a>
+                                        <a href="{{ route('post.delete',['id'=>$post->id]) }}" onclick="return confirm('Are you sure to delete this ?')" class="text-danger"><i class="fa-solid fa-trash fa-2x "></i></a>
                                     </td>
                                 </tr>
                             @endforeach
