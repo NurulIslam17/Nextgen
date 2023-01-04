@@ -92,17 +92,7 @@ class BlogController extends Controller
             unlink($post->image);
         }
 
-        $images = explode("|", $post->feature_image);
 
-//        foreach($images as $image)
-//        {
-//
-//            $image_path = public_path().'/post/features_image/'.$image;
-//
-//            if(File::exists($image_path)) {
-//                File::delete($image_path);
-//            }
-//        }
 
         $post->delete();
         return back()->with('delete','Post Deleted successfully.');

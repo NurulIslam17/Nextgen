@@ -14,7 +14,7 @@
 
     <title>Nextgen Blog</title>
 </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
             <div class="container">
@@ -55,6 +55,10 @@
 
 
        @yield('body')
+
+        <footer class="bg-dark mt-auto">
+            <p class="text-light text-center my-0 py-2">&copy;Designed and Developed <i class="fa fa-heart text-success"></i> By Nurul Islam</p>
+        </footer>
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
