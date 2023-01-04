@@ -1,4 +1,9 @@
 @extends('fontend.master')
+
+@section('title')
+    Home
+@endsection
+
 @section('body')
     <div class="container">
         <div class="row mt-3">

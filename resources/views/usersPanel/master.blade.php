@@ -11,7 +11,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('/')}}beckend/assets/images/favicon.ico">
+{{--    <link rel="shortcut icon" href="{{asset('/')}}beckend/assets/images/favicon.ico">--}}
 
     <!-- Bootstrap Css -->
     <link href="{{asset('/')}}beckend/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -148,11 +148,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Skote.
+                        <script>document.write(new Date().getFullYear())</script> © NextBlog.
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-right d-none d-sm-block">
-                            Design & Develop by Themesbrand
+                            Design & Develop by Nurul Islam
                         </div>
                     </div>
                 </div>

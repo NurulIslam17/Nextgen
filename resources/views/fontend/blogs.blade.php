@@ -1,4 +1,9 @@
 @extends('fontend.master')
+
+@section('title')
+    Blog
+@endsection
+
 @section('body')
     <section class="py-2 bg-secondary">
         <div class="container-fluid">

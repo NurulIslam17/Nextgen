@@ -17,7 +17,7 @@
                                     <img src="{{asset('/')}}beckend/assets/images/logo-light.svg" alt="" height="22">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="{{asset('/')}}beckend/assets/images/logo-light.png" alt="" height="19">
+                                    <span style="font-weight: bolder; font-size: 25px;color: #b60000">Next</span><span style="font-weight: bolder; font-size: 25px;color: #ffffff">Blog</span>
                                 </span>
                 </a>
             </div>
