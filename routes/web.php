@@ -1,18 +1,41 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserPanelController;
+use App\Http\Controllers\FontendController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SendInTwoTableController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+//Font Ends Routes
+Route::get('/',[FontendController::class,'home'])->name('font.home');
+Route::get('/blogs',[FontendController::class,'blogs'])->name('font.blogs');
+Route::get('/blog/post/details/{id}',[FontendController::class,'postDetails'])->name('blog.post.details');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+
+    Route::get('/dashboard',[UserPanelController::class,'dashboard'])->name('dashboard');
+
+    Route::get('/create/blog',[BlogController::class,'createClog'])->name('create.blog');
+    Route::get('/manage/blog',[BlogController::class,'manageBlog'])->name('manage.blog');
+
+    Route::post('/store/post',[BlogController::class,'storePost'])->name('store.post');
+    Route::get('/post/details/{id}',[BlogController::class,'postDetails'])->name('post.details');
+    Route::get('/post/delete/{id}',[BlogController::class,'postDelete'])->name('post.delete');
+
+    //    random.post
+    Route::get('/random-post',[BlogController::class,'randomPost'])->name('random.post');
+    Route::post('/data-post',[BlogController::class,'dataPost'])->name('data.post');
+
+    // Send data in two table
+    Route::get('/insert-into-two',[SendInTwoTableController::class,'insertIntoTwo'])->name('insert.into.two');
+    Route::post('/store-in-two',[SendInTwoTableController::class,'storeInTwo'])->name('store.in.two');
+
+
+
 });
