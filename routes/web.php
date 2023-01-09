@@ -27,4 +27,8 @@ Route::middleware([
     Route::get('/post/details/{id}',[BlogController::class,'postDetails'])->name('post.details');
     Route::get('/post/delete/{id}',[BlogController::class,'postDelete'])->name('post.delete');
 
+    //    random.post
+    Route::get('/random-post',[BlogController::class,'randomPost'])->name('random.post');
+    Route::post('/data-post',[BlogController::class,'dataPost'])->name('data.post');
+
 });

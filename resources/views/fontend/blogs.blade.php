@@ -8,7 +8,7 @@
     <section class="py-2 bg-secondary">
         <div class="container-fluid">
             <div class="row">
-                <h1 class="text-center text-light py-2">Blog Posts</h1>
+                <h3 class="text-center py-2">Blog Posts</h3>
             </div>
 
         </div>
@@ -33,7 +33,7 @@
                                   {!! substr($post->description,0,200) !!} <a href="{{ route('blog.post.details',['id'=>$post->id]) }}">more...</a>
                                 </p>
 
-                                <p class="p-0 m-0"> <i class="fa-solid fa-user text-danger"></i> &nbsp; {{ $post->name }} &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-calendar-days text-warning"></i>  &nbsp; {{ $post->date }}</p>
+                                <p class="p-0 m-0"> <i class="fa-solid fa-user text-danger"></i> &nbsp; {{ $post->name }} &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-calendar-days text-secondary"></i>  &nbsp; {{ $post->date }}</p>
 
 
                             </div>
@@ -52,16 +52,16 @@
                         <hr>
                         <ul>
                             <li>
-                                <a href="">ABC</a>
+                                <a href="">Lorem ipsum dolor</a>
                             </li>
                             <li>
-                                <a href="">ABC</a>
+                                <a href="">sit amet, consec</a>
                             </li>
                             <li>
-                                <a href="">ABC</a>
+                                <a href="">tetur adipisi</a>
                             </li>
                             <li>
-                                <a href="">ABC</a>
+                                <a href="">cing elit. Ea, in</a>
                             </li>
                         </ul>
                     </div>

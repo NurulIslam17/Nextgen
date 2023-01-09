@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Date;
+
 
 class BlogController extends Controller
 {
@@ -92,11 +95,38 @@ class BlogController extends Controller
             unlink($post->image);
         }
 
-
-
         $post->delete();
         return back()->with('delete','Post Deleted successfully.');
+    }
 
+    //    randomPost
+    public function randomPost()
+    {
+        return view('usersPanel.random.post');
+    }
+    //dataPost
 
+    public function saveDataImage($request)
+    {
+        $this->image       = $request->file('image');
+        $this->imageName    = 'image_data'.time().'.'.$this->image->getClientOriginalExtension();
+        $this->imageDir     = 'post/data/';
+        $this->image->move($this->imageDir,$this->imageName);
+        $this->imageUrl     =($this->imageDir.$this->imageName);
+        return $this->imageUrl;
+    }
+
+    public function dataPost(Request $request)
+    {
+    //        return $request;
+        Data::insert([
+            'title'         => $request->title,
+            'author_id'     => Auth::user()->id,
+            'description'   => $request->description,
+            'image'         => $this->saveDataImage($request),
+            'date'          => $request->date,
+        ]);
+
+        return back()->with('msg','Data Inserted Successfully');
     }
 }

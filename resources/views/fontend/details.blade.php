@@ -7,7 +7,7 @@
     <section class="py-2 bg-secondary">
         <div class="container-fluid">
             <div class="row">
-                <h1 class="text-center text-light py-2">Post Details</h1>
+                <h3 class="text-center py-2">Post Details</h3>
             </div>
 
         </div>
@@ -22,7 +22,7 @@
                         {{ $details->title }}
                     </h4>
                     <p class="py-1 my-0"> <i class="fa-solid fa-user" style="color: #d20303"></i> &nbsp;By {{ $details->name  }}</p>
-                    <p class="py-0 my-0"> <i class="fa fa-calendar"> </i> &nbsp;{{ $details->date  }}</p>
+                    <p class="py-0 my-0"> <i class="fa-solid fa-calendar-days text-secondary"></i>  &nbsp;{{ $details->date  }}</p>
 
                     <p>
                         {!! $details->description !!}
