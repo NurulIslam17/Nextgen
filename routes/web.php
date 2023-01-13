@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserPanelController;
 use App\Http\Controllers\FontendController;
 use App\Http\Controllers\BlogController;
+
 use App\Http\Controllers\SendInTwoTableController;
 
 
@@ -35,7 +36,5 @@ Route::middleware([
     // Send data in two table
     Route::get('/insert-into-two',[SendInTwoTableController::class,'insertIntoTwo'])->name('insert.into.two');
     Route::post('/store-in-two',[SendInTwoTableController::class,'storeInTwo'])->name('store.in.two');
-
-
 
 });
