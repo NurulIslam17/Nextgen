@@ -26,6 +26,9 @@
                 <li>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('insert.into.two') }}">Insert into 2</a></li>
+
+                        <li><a href="{{ route('create.blog') }}">Create Form</a></li>
+
                         <li><a href="">Manage Blogs</a></li>
                     </ul>
                 </li>

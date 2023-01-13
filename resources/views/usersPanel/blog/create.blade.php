@@ -4,7 +4,6 @@
 @endsection
 
 @section('main')
-
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
@@ -96,5 +95,4 @@
         </div>
 
     </div>
-
 @endsection

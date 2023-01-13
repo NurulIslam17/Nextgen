@@ -7,7 +7,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SendInTwoTableController;
 
 
-
 //Font Ends Routes
 Route::get('/',[FontendController::class,'home'])->name('font.home');
 Route::get('/blogs',[FontendController::class,'blogs'])->name('font.blogs');
@@ -35,7 +34,6 @@ Route::middleware([
     // Send data in two table
     Route::get('/insert-into-two',[SendInTwoTableController::class,'insertIntoTwo'])->name('insert.into.two');
     Route::post('/store-in-two',[SendInTwoTableController::class,'storeInTwo'])->name('store.in.two');
-
 
 
 });
