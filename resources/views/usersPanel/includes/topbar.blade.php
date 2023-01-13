@@ -34,6 +34,7 @@
                 </div>
             </form>
 
+
         </div>
 
         <div class="d-flex">
@@ -67,6 +68,13 @@
                          alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ml-1">{{ Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                </button>
+
+                <button type="button" class="btn header-item waves-effect">
+                    
+                    <a href="{{ url('/chatify')}}" target="new">
+                        <i style="font-size: 25px;color:blue"  class="mdi mdi-send d-none d-xl-inline-block"></i>
+                    </a>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
