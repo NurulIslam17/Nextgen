@@ -5,6 +5,7 @@ use App\Http\Controllers\UserPanelController;
 use App\Http\Controllers\FontendController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SendInTwoTableController;
+use App\Http\Controllers\ManageImgDiffController;
 
 
 //Font Ends Routes
@@ -34,6 +35,11 @@ Route::middleware([
     // Send data in two table
     Route::get('/insert-into-two',[SendInTwoTableController::class,'insertIntoTwo'])->name('insert.into.two');
     Route::post('/store-in-two',[SendInTwoTableController::class,'storeInTwo'])->name('store.in.two');
+
+    Route::get('/manage-img-diff',[ManageImgDiffController::class,'index'])->name('mange.img.diff');
+    Route::get('/create-img-diff',[ManageImgDiffController::class,'create'])->name('create.img.diff');
+    
+    Route::post('/store-product',[ManageImgDiffController::class,'store'])->name('store.product');
 
 
 });

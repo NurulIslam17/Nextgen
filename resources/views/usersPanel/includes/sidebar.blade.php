@@ -22,14 +22,14 @@
                     </ul>
                 </li>
 
-                <li class="menu-title">Send Data Two Table</li>
+                <li class="menu-title">Random Section</li>
                 <li>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('insert.into.two') }}">Insert into 2</a></li>
 
                         <li><a href="{{ route('create.blog') }}">Create Form</a></li>
 
-                        <li><a href="">Manage Blogs</a></li>
+                        <li><a href="{{ route('mange.img.diff')}}">Manage Img Differently</a></li>
                     </ul>
                 </li>
 
