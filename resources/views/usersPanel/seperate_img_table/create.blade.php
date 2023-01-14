@@ -50,6 +50,11 @@
                                   </div>
 
                                   <div class="form-group">
+                                    <label for="name">Product Key</label>
+                                    <input type="text" name="product_key" class="form-control" id="product_key" placeholder="Enter Product Key">
+                                  </div>
+
+                                  <div class="form-group">
                                     <label for="slug">Slug</label>
                                     <input type="text" name="slug" class="form-control" id="slug"  placeholder="Enter slug">
                                   </div>
