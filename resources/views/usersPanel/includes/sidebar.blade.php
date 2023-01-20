@@ -33,6 +33,19 @@
                     </ul>
                 </li>
 
+                <li class="menu-title">Ajax</li>
+                <li>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('ajax.index') }}">AJAX </a></li>
+                    </ul>
+                </li>
+                <li class="menu-title">Main Blog</li>
+                <li>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('main_blog.index') }}">Blogs </a></li>
+                    </ul>
+                </li>
+
 
             </ul>
         </div>

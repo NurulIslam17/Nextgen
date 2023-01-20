@@ -6,6 +6,8 @@ use App\Http\Controllers\FontendController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SendInTwoTableController;
 use App\Http\Controllers\ManageImgDiffController;
+use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\MainBlogController;
 
 
 //Font Ends Routes
@@ -39,7 +41,13 @@ Route::middleware([
     Route::get('/manage-img-diff',[ManageImgDiffController::class,'index'])->name('mange.img.diff');
     Route::get('/create-img-diff',[ManageImgDiffController::class,'create'])->name('create.img.diff');
     
-    Route::post('/store-product',[ManageImgDiffController::class,'store'])->name('store.product');
+    //Ajax 
+    Route::resource('ajax',AjaxController::class);
+
+    //main blog Controller
+    Route::resource('main_blog', MainBlogController::class);
 
 
 });
+
+
