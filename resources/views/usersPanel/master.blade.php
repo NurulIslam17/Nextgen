@@ -25,7 +25,10 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-   
+    {{-- toastr --}}
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
 
@@ -233,7 +236,7 @@
     {{-- <script src="{{ asset('/') }}beckend/assets/js/pages/dashboard.init.js"></script> --}}
     <!-- App js -->
     {{-- <script src="{{ asset('/') }}beckend/assets/js/app.js"></script> --}}
-    
+
     <!-- textEditors -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
@@ -256,6 +259,8 @@
             }
         })
     </script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
 
     @stack('js')
 

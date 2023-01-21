@@ -43,6 +43,8 @@ Route::middleware([
     
     //Ajax 
     Route::resource('ajax',AjaxController::class);
+    Route::post('/update',[AjaxController::class,'updateList'])->name('update.todo.list');
+    Route::post('/delete',[AjaxController::class,'deleteList'])->name('delete.todo.list');
 
     //main blog Controller
     Route::resource('main_blog', MainBlogController::class);

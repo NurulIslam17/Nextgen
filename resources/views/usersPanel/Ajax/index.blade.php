@@ -53,7 +53,8 @@
                                             </a>
 
 
-                                            <a href="" class="btn btn-danger"> <i class="fa fa-trash"></i></a>
+                                            <a href="" class="btn btn-danger delete_list"
+                                                data-id="{{ $list->id }}"> <i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -70,7 +71,7 @@
 @endsection
 
 <!--Insert  Modal -->
-<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade rounded-0" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
     <form action="" method="post" id='todo_form'>
         @csrf
@@ -117,10 +118,10 @@
 <!--Update  Modal -->
 <div class="modal fade" id="update_modal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-    <form action="" method="post" id='todo_form'>
+    <form action="" method="post" id='up_todo_form'>
         @csrf
-        @method('post')
-        <input type="hidden" name="up_id">
+        @method('put')
+        <input type="hidden" name="up_id" id="up_id">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -140,11 +141,11 @@
 
                     <div class="mb-3">
                         <label for="u_start" class="form-label"> <strong>Start</strong> </label>
-                        <input type="u_date" name="ups_date" required class="form-control" id="up_start">
+                        <input type="date" name="ups_date" required class="form-control" id="up_start">
                     </div>
                     <div class="mb-3">
                         <label for="u_end" class="form-label"> <strong>End</strong> </label>
-                        <input type="u_date" name="upe_date" required class="form-control" id="up_end">
+                        <input type="date" name="upe_date" required class="form-control" id="up_end">
                     </div>
 
                 </div>
@@ -184,7 +185,29 @@
                         if (response.status == 1) {
                             $('.modal').modal('hide');
                             $('#todo_form')[0].reset();
-                            $('.table').load(location.href + ' .table');
+                            $('.table').reload(location.href + ' .table');
+
+                            Command: toastr["success"](
+                                "New todo li created"
+                            )
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "800",
+                                "timeOut": "1000",
+                                "extendedTimeOut": "700",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
                         }
                     },
                     error: function(err) {
@@ -202,7 +225,7 @@
             $('.update_list').click(function() {
 
                 let id = $(this).data('id'); //data-id="{{ $list->id }}"
-                let wtd = $(this).data('todo');//data-todo="{{ $list->wtd }}" 
+                let wtd = $(this).data('todo'); //data-todo="{{ $list->wtd }}" 
                 let start = $(this).data('s_date');
                 let ends = $(this).data('e_date');
                 // alert(ends);
@@ -212,7 +235,105 @@
                 $('#up_start').val(start);
                 $('#up_end').val(ends);
             });
-            
+
+            // update list
+            $('.upadate_todo_list').click(function(e) {
+                // alert('update list btn working');
+                e.preventDefault();
+                let id = $('#up_id').val();
+                let wtd = $('#up_wtd').val();
+                let s_date = $('#up_start').val();
+                let e_date = $('#up_end').val();
+                //    console.log(wtd + s_date + e_date);
+
+                $.ajax({
+                    url: "{{ route('update.todo.list') }}",
+                    method: "post",
+                    data: {
+                        id: id,
+                        wtd: wtd,
+                        s_date: s_date,
+                        e_date: e_date,
+                    },
+                    success: function(response) {
+                        // alert(response.status);
+                        if (response.status == 1) {
+                            $('#update_modal').modal('hide');
+                            $('#up_todo_form')[0].reset();
+                            $('.table').load(location.href + ' .table');
+
+                            Command: toastr["success"](
+                                "I do not think that means what you think it means.")
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "700",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        }
+                    },
+                    error: function(err) {
+                        let error = err.responseJSON;
+                        $.each(error.errors, function(index, value) {
+                            $('.err_Msg').append('<span class="text-danger">' + value +
+                                '</span><br>');
+                        });
+                    }
+                });
+            });
+
+            // delete
+
+            $('.delete_list').click(function() {
+                let id = $(this).data('id');
+                alert($id);
+
+                // if (confirm('Are you sure to delete this ??')) {
+                //     $.ajax(function() {
+                //         url: "{{ route('delete.todo.list') }}",
+                //         method: "post",
+                //         data: {
+                //             delete_id: id,
+                //         },
+                //         success: function(res) {
+                //             Command: toastr["success"](
+                //                 "product Deleted"
+                //                 )
+
+                //             toastr.options = {
+                //                 "closeButton": false,
+                //                 "debug": false,
+                //                 "newestOnTop": false,
+                //                 "progressBar": false,
+                //                 "positionClass": "toast-top-center",
+                //                 "preventDuplicates": false,
+                //                 "onclick": null,
+                //                 "showDuration": "300",
+                //                 "hideDuration": "1000",
+                //                 "timeOut": "5000",
+                //                 "extendedTimeOut": "1000",
+                //                 "showEasing": "swing",
+                //                 "hideEasing": "linear",
+                //                 "showMethod": "fadeIn",
+                //                 "hideMethod": "fadeOut"
+                //             }
+                //         }
+                //     });
+                // }
+            });
+
         })
     </script>
 @endpush

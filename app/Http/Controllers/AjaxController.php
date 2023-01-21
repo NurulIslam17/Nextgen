@@ -14,8 +14,8 @@ class AjaxController extends Controller
      */
     public function index()
     {
-        $lists = DB::table('todo')->orderBy('id','desc')->get();
-        return view('usersPanel.Ajax.index',compact('lists'));
+        $lists = DB::table('todo')->orderBy('id', 'desc')->get();
+        return view('usersPanel.Ajax.index', compact('lists'));
     }
 
     /**
@@ -58,7 +58,7 @@ class AjaxController extends Controller
         ]);
 
         return response()->JSON([
-            'status'=>1,
+            'status' => 1,
         ]);
     }
 
@@ -93,7 +93,7 @@ class AjaxController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //update
     }
 
     /**
@@ -105,5 +105,33 @@ class AjaxController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    //updateList
+    public function updateList(Request $request)
+    {
+        $upId = $request->id;
+
+        DB::table('todo')->where('id', $upId)->update([
+            'wtd' => $request->wtd,
+            's_date' => $request->s_date,
+            'e_date' => $request->e_date,
+        ]);
+
+        return response()->JSON([
+            'status' => 1,
+        ]);
+    }
+    //deleteList
+    public function deleteList(Request $request)
+    {
+        $upId = $request->id;
+
+        DB::table('todo')->where('id', $upId)->delete();
+
+        return response()->JSON([
+            'status' => 1,
+        ]);
     }
 }
